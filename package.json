@@ -6,6 +6,8 @@
     "watch:css": "postcss src/styles/index.css -o src/index.css -w",
     "start": "npm run watch:css & react-scripts start",
     "build": "npm run build:css && react-scripts build",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged"
