@@ -22,7 +22,7 @@ import Sets from './sets'
 const Clock = props => {
 
   return (
-    <div className="flex flex-row content-center">
+    <div className="flex flex-row content-center justify-center">
       <div className="flex flex-col w-1/2">
         <div className="flex-none">
             <IntervalVector vector={props.vector} />
