@@ -1,0 +1,53 @@
+
+
+.operation-btn {
+  @apply shadow-lg m-1 h-8 p-2 text-xs cursor-pointer rounded;
+}
+
+.btn-invert {
+  @apply bg-teal-500 text-gray-200;
+}
+
+.btn-invert:hover {
+  @apply bg-teal-600 text-gray-300;
+}
+
+.btn-complement {
+  @apply bg-blue-600 text-gray-200;
+}
+
+.btn-complement:hover {
+  @apply bg-yellow-400 text-gray-800;
+}
+
+.btn-rotate {
+  @apply bg-green-600 text-gray-200;
+}
+
+.btn-rotate:hover {
+  @apply bg-green-500 text-gray-100;
+}
+
+.btn-rotate-intervals {
+  @apply bg-pink-600 text-gray-200;
+}
+
+.btn-rotate-intervals:hover {
+  @apply bg-pink-500 text-gray-100;
+}
+
+.btn-clear {
+  @apply bg-gray-800 text-gray-200;
+}
+
+.btn-clear:hover {
+  @apply bg-gray-200 text-gray-800;
+}
+
+.btn-save {
+  @apply bg-teal-300 text-teal-800;
+}
+
+.btn-save:hover {
+  @apply bg-teal-200 text-teal-800;
+}

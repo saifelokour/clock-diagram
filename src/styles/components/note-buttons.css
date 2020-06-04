@@ -1,0 +1,21 @@
+
+.note-btn {
+  @apply absolute h-5 w-5 rounded-full shadow-lg cursor-pointer text-gray-700 text-xs bg-gray-100;
+}
+
+.selected {
+  @apply text-gray-300 text-xs bg-gray-700;
+}
+
+.note-btn.preview {
+  @apply h-2 w-2 bg-gray-300 text-gray-100 text-opacity-0; 
+}
+
+.preview.selected {
+  @apply bg-gray-700;
+}
+
+@media (min-width: 1024px) {
+  .note-btn { @apply h-10 w-10 text-xl; }
+}
+
