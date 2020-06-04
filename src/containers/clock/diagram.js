@@ -1,42 +1,10 @@
 //@ts-check
 import React from 'react'
+import { symbol } from './helpers/symbol.js'
 
-const symbol = (number) => {
-  switch (number) {
-    case 10:
-      return "T"
-    case 11:
-      return "E"
-    case 12:
-      return "C"
-    default:
-      return number
-  }
-}
-
-const circleClass = (selected, preview) => (preview 
-  ? circlePreviewClasses(selected) 
-  : circleClasses(selected)
-)
-
-const circleClasses = (selected) => (selected 
-  ? "border-solid border-2 border-gray-700" 
-  : "border-2 border-gray-100"
-)
-
-const circlePreviewClasses = (selected) => (selected ? "bg-gray-700" : "bg-gray-300")
-
-const Note = ({note, onClick, coordinates, preview}) => (
-  <button
-    className="absolute lg:h-10 lg:w-10 h-4 w-4 rounded-full shadow-lg cursor-pointer text-gray-700 lg:text-xl text-xs"
-    style={{
-      ...coordinates,
-      "outline": "none",
-      "background": "center"
-    }}
-    onClick={onClick}
-  >
-    {symbol(note)}
+const Note = ({note, onClick, coordinates, className}) => (
+  <button className={className} style={coordinates} onClick={onClick}>
+    {note}
   </button>
 )
 
@@ -47,41 +15,29 @@ const point = (r, i) => {
   return [x, y]
 }
 
-const Diagram = ({notes, select, preview = false, r = 90, b = 40}) => {
+const Diagram = ({notes, select, isPreview = false, r = 90, b = 40}) => {
   const containerSize = (r*2)+b
   // h-10 and w-10 = 40px
   return (
     <div id="clock" className="relative m-auto" style={{height: containerSize, width: containerSize}}>
-      {notes.map((selected, i) => {
+      {notes.map((isSelected, i) => {
         const [x, y] = point(r, i)
-
-        const size = preview ? "h-2 w-2" : "lg:h-10 lg:w-10 h-4 w-4"
-        return (
-          <div
-            key={i}
-            className={"absolute " + size + " rounded-full bg-transparent " + circleClass(selected, preview)} 
-            style={{
-              left: x,
-              top: y
-            }}
-          ></div>
-        )
-      })}
-
-      {preview ? "" : [...Array(12).keys()].map(i => {
-        const [x, y] = point(r, i)
+        
+        const onClick = isPreview ? () => "" : () => select(i)
+        const classPredicates = {preview: isPreview, selected: isSelected}
+        const classes = Object.keys(classPredicates)
+          .filter(key => classPredicates[key])
+          .map(key => key)
+          .join(" ")
 
         return <Note
           key={i}
-          note={i}
-          coordinates={{
-            left: x, 
-            top:  y
-          }}
-          onClick={() => select(i)}
+          note={symbol(i)}
+          className={"note-btn " + classes}
+          coordinates={{ left: x, top:  y }}
+          onClick={onClick}
         />
-        }
-      )}
+      })}
     </div>
   )
 }
