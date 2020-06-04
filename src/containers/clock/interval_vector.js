@@ -1,5 +1,6 @@
 //@ts-check
 import React from 'react'
+import { symbol } from './helpers/symbol.js'
 
 const Interval = ({freq, interval, preview}) => (
   <div className="flex flex-col flex-none">
@@ -13,18 +14,5 @@ const IntervalVector = ({vector, preview}) => (
       {"< "}{vector.map((freq, i) => <Interval key={i} freq={freq} interval={i+1} preview={preview}/>)}{" >"}
   </div>
 )
-
-const symbol = (number) => {
-  switch (number) {
-    case 10:
-      return "T"
-    case 11:
-      return "E"
-    case 12:
-      return "C"
-    default:
-      return number
-  }
-}
 
 export default IntervalVector

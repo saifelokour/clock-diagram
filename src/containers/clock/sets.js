@@ -7,7 +7,7 @@ import Diagram from './diagram'
 const Sets = ({sets, load, remove}) => (
   <>
     <div className="flex-1 text-lg p-2 font-semibold border-b-2 w-64 text-center">Sets</div>
-    {sets.size === 0 ?  
+    { sets.size === 0 ?  
     (<div className="flex-1 text-gray-500 mt-2 text-sm text-center">You have no saved sets.</div>)
     : sets.map(([vector, notes], i) => (
         <div key={i} className="relative">
@@ -15,7 +15,7 @@ const Sets = ({sets, load, remove}) => (
             <div className="flex-initial my-auto">
               <Diagram
                 notes={notes}
-                preview={true}
+                isPreview={true}
                 r={20}
                 b={8}
               />
